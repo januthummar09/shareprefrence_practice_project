@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shareprefrence_practice_project/screens/get_string/get_string_data_screen.dart';
 import 'package:shareprefrence_practice_project/utils/local_data.dart';
 
 class SetStringDataScreen extends StatefulWidget {
@@ -10,8 +11,17 @@ class SetStringDataScreen extends StatefulWidget {
 
 class _SetStringDataScreenState extends State<SetStringDataScreen> {
   LocalData localData = LocalData();
-  dynamic data = 123;
+  dynamic name = "name";
+  dynamic surname = "surname";
   String? abc;
+  @override
+  void initState() {
+    super.initState();
+    localData.setStringData(key: "name", val: "janki");
+    localData.setStringData(key: "surname", val: "thummar");
+    localData.getStringData(key: "name");
+    localData.getStringData(key: "surname");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,33 +29,63 @@ class _SetStringDataScreenState extends State<SetStringDataScreen> {
       appBar: AppBar(),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text("data :$data"),
+            Text(
+              "Name :$name",
+              style: textDeco(),
+            ),
+            Text(
+              "Surname :$surname",
+              style: textDeco(),
+            ),
             ElevatedButton(
               onPressed: () async {
-                // data = localData.setStringData(key: "name", val: 'janki');
-                data = await localData.setStringData(key: "name", val: "janki");
-                // debugPrint("data -->> $data");
-                debugPrint(
-                    "data=-------------->>${await localData.setStringData(key: 'cv', val: 'cvbn')}");
+                name = await localData.setStringData(key: "name", val: "janki");
+                surname = await localData.setStringData(
+                    key: "surname", val: "Thummar");
+                debugPrint("set name----------->>$name");
+                debugPrint("set surname----------->>$surname");
+                // debugPrint(
+                //     "set data----------->>${localData.setStringData(key: "name", val: "janki")}");
+                setState(() {});
               },
               child: const Text("set"),
             ),
             ElevatedButton(
               onPressed: () async {
-                data = await localData.getStringData(key: 'name');
-                // data = await localData.setStringData(key: "name", val: "janki");
-                debugPrint("data -->> $data");
+                name = await localData.getStringData(key: 'name');
+                surname = await localData.getStringData(key: "surname");
+                debugPrint("name -->> $name");
+                debugPrint("surname -->> $surname");
                 // debugPrint(
                 //     "data=-------------->>${await localData.setStringData(key: 'cv', val: 'cvbn')}");
                 setState(() {});
               },
               child: const Text("get"),
             ),
+            ElevatedButton(
+              onPressed: () async {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const GetStringDataScreen(),
+                  ),
+                );
+              },
+              child: const Text("next screen"),
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  TextStyle textDeco() {
+    return const TextStyle(
+      fontSize: 30,
+      fontWeight: FontWeight.w500,
+      color: Colors.blue,
     );
   }
 }

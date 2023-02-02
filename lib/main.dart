@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shareprefrence_practice_project/screens/get_bool/get_bool_first_screen.dart';
 import 'package:shareprefrence_practice_project/screens/get_int/get_int_frist_screen.dart';
 import 'package:shareprefrence_practice_project/screens/get_string/set_string_data_screen.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SetStringDataScreen(),
+      home: const GetBoolFirstScreen(),
     );
   }
 }
