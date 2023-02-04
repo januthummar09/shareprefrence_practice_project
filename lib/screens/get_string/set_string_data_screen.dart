@@ -13,14 +13,10 @@ class _SetStringDataScreenState extends State<SetStringDataScreen> {
   LocalData localData = LocalData();
   dynamic name = "name";
   dynamic surname = "surname";
-  String? abc;
   @override
   void initState() {
     super.initState();
-    localData.setStringData(key: "name", val: "janki");
-    localData.setStringData(key: "surname", val: "thummar");
     localData.getStringData(key: "name");
-    localData.getStringData(key: "surname");
   }
 
   @override

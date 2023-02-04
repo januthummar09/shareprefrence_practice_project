@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shareprefrence_practice_project/screens/get_bool/get_bool_first_screen.dart';
+import 'package:shareprefrence_practice_project/screens/get_bool/set_bool_first_screen.dart';
 import 'package:shareprefrence_practice_project/screens/get_int/get_int_frist_screen.dart';
+import 'package:shareprefrence_practice_project/screens/get_model/set_model_screen.dart';
 import 'package:shareprefrence_practice_project/screens/get_string/set_string_data_screen.dart';
 
 void main() {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const GetBoolFirstScreen(),
+      home: const SetModelScreen(),
     );
   }
 }
