@@ -33,19 +33,25 @@ class _SetBoolFirstScreenState extends State<SetBoolFirstScreen> {
             ),
             ElevatedButton(
               onPressed: () async {
-                // localData.setBoolData("done1", false);
-                done = await localData.setBoolData("cheak", false);
-                // debugPrint(
-                //     "set done1 Direct---------->>${await localData.setBoolData("done1", false)},");
-                debugPrint("set done---------->>$done");
+                localData.setBoolData("done1", false);
+                // done = await localData.setBoolData("cheak", false);
+                debugPrint(
+                    "set done1 Direct---------->>${await localData.setBoolData("done1", false)},");
+                // debugPrint("set done---------->>$done");
                 setState(() {});
               },
               child: const Text("set"),
             ),
             ElevatedButton(
               onPressed: () async {
-                done = await localData.getBoolData(key: "cheak");
-                debugPrint("get done---------->>$done");
+                if (localData.prefs!.containsKey('cheakk')) {
+                  debugPrint("true");
+                  done = await localData.getBoolData(key: "cheak");
+                  debugPrint("get done---------->>$done");
+                } else {
+                  debugPrint("false");
+                  done = false;
+                }
                 setState(() {});
               },
               child: const Text("get"),
